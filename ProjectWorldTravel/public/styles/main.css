@@ -1,0 +1,100 @@
+/* Add any custom styles here */
+.hero {
+  background-image: url('../images/index.jpg');
+
+    background-size: cover;
+    background-position: center;
+    height: 960px; /* Set height to auto */
+    text-align: center;
+    font-size: 30px;
+    font-weight: 1000;
+    color: black; /* Text color to ensure readability */
+ 
+}
+
+.hero h1 {
+  font-size: 3em;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.5em;
+  margin-bottom: 40px;
+}
+
+.featured-destinations {
+  padding: 20px;
+  text-align: center;
+}
+
+.featured-destinations h2 {
+  margin-bottom: 20px;
+}
+
+.card {
+  width: 18rem;
+  margin-bottom: 20px;
+}
+
+.card img {
+  border-radius: 10px;
+}
+
+#footer {
+  background-color: #f8f9fa;
+  padding: 20px;
+  bottom: 0;
+  width: 100%;
+}
+
+#footer h2 {
+  align-items: center;
+}
+
+.contact-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.person {
+  width: 45%;
+}
+
+.person h3 {
+  margin-bottom: 10px;
+}
+
+.person p {
+  margin: 5px 0;
+}
+
+#start-button {
+  width: 200px;
+  height: 60px;
+  border: none;
+  border-radius: 30px;
+  background-color: #4CAF50;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  /* Cool gradient background */
+  background-image: linear-gradient(to right, #4CAF50, #2196F3);
+  /* Add cool shadow effect */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+.destination-button {
+  background-color: white; /* Set background color to white */
+  color: black; /* Set text color to black */
+  border: none; /* Remove button border */
+  outline: none; /* Remove button outline */
+  /* Add any additional styling as needed */
+}
+
+.card {
+  width: 288px; /* Set width to 288 pixels */
+  height: 250px; /* Set height to 250 pixels */
+  /* Add any additional styling as needed */
+}
+
+
+

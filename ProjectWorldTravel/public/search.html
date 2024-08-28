@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Locations</title>
+    <style>
+        /* Add any custom styles here */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .hero {
+            background-image: url('../images/index.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 960px;
+            text-align: center;
+            font-size: 30px;
+            font-weight: 1000;
+            color: black;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.5em;
+            margin-bottom: 40px;
+        }
+
+        .featured-destinations {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .featured-destinations h2 {
+            margin-bottom: 20px;
+        }
+
+        .card {
+            width: 288px;
+            height: 250px;
+            margin-bottom: 20px;
+        }
+
+        .card img {
+            border-radius: 10px;
+        }
+
+        #footer {
+            background-color: #f8f9fa;
+            padding: 20px;
+            bottom: 0;
+            width: 100%;
+        }
+
+        #footer h2 {
+            text-align: center;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .person {
+            width: 45%;
+        }
+
+        .person h3 {
+            margin-bottom: 10px;
+        }
+
+        .person p {
+            margin: 5px 0;
+        }
+
+        #start-button {
+            width: 200px;
+            height: 60px;
+            border: none;
+            border-radius: 30px;
+            background-image: linear-gradient(to right, #4CAF50, #2196F3);
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .destination-button {
+            background-color: white;
+            color: black;
+            border: none;
+            outline: none;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 20px auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        #findDetails {
+            flex: 1 1 100%;
+            padding: 20px;
+            background-color: floralwhite;
+            color: darkslategray;
+        }
+
+        input, button {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button {
+            cursor: pointer;
+            background-color: darkslategray;
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #4f4f4f;
+        }
+
+        #results {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        h3 {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div id="findDetails">
+            <h1>Input Your Requests</h1>
+            <h4>City</h4>
+            <input id="findCityInput" type="text" placeholder="Enter City Name">
+            <h4>Start Date</h4>
+            <input id="startDateInput" type="date">
+            <h4>End Date</h4>
+            <input id="endDateInput" type="date">
+            <h4>Number of People</h4>
+            <input id="numPeopleInput" type="number" placeholder="Enter Number of People" min="1">
+            <br>
+            <button id="find">FIND</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <footer>
+            <h2>Contact Us</h2>
+            <div class="contact-info">
+                <div class="person">
+                    <h3>Francesco Calabrese</h3>
+                    <p>Phone: +393281670702</p>
+                    <p>Email: name1@example.com</p>
+                </div>
+                <div class="person">
+                    <h3>Matteo Calviello</h3>
+                    <p>Phone: +393662156244</p>
+                    <p>Email: mattecalviello04@gmail.com</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-analytics.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "my key",
+          authDomain: "my domain",
+          databaseURL: "url",
+          projectId: "id",
+          storageBucket: "",
+          messagingSenderId: "",
+          appId: "id",
+          measurementId: "id"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+
+        import { getDatabase, ref, get, child } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-database.js";
+
+        const db = getDatabase();
+
+        const findCityInput = document.querySelector("#findCityInput");
+        const startDateInput = document.querySelector("#startDateInput");
+        const endDateInput = document.querySelector("#endDateInput");
+        const numPeopleInput = document.querySelector("#numPeopleInput");
+        const resultsDiv = document.querySelector("#results");
+        const findBtn = document.querySelector("#find");
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const storedCity = localStorage.getItem('selectedCity');
+            if (storedCity) {
+                findCityInput.value = storedCity;
+            }
+        });
+
+        function FindData() {
+            const dbref = ref(db);
+            resultsDiv.innerHTML = '';
+
+            get(child(dbref, "TravelLocations"))
+                .then((snapshot) => {
+                    if (snapshot.exists()) {
+                        const data = snapshot.val();
+                        let found = false;
+                        for (let key in data) {
+                            if (data[key].City.toLowerCase() === findCityInput.value.toLowerCase()) {
+                                resultsDiv.innerHTML += `<h3>Name: ${data[key].Name}</h3>`;
+                                resultsDiv.innerHTML += `<h3>Address: ${data[key].Address}</h3>`;
+                                resultsDiv.innerHTML += `<h3>Max Number of People: ${data[key].MaxNumPeople}</h3><br>`;
+                                found = true;
+                            }
+                        }
+                        if (!found) {
+                            resultsDiv.innerHTML = "<h3>No data found</h3>";
+                        }
+                    } else {
+                        resultsDiv.innerHTML = "<h3>No data found</h3>";
+                    }
+                })
+                .catch((error) => {
+                    alert(error);
+                });
+        }
+
+        findBtn.addEventListener('click', FindData);
+    </script>
+</body>
+</html>
