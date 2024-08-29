@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Travel Locations</title>
     <style>
-        /* Add any custom styles here */
         body {
             margin: 0;
             font-family: Arial, sans-serif;
@@ -24,80 +23,9 @@
             color: black;
         }
 
-        .hero h1 {
-            font-size: 3em;
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-            font-size: 1.5em;
-            margin-bottom: 40px;
-        }
-
         .featured-destinations {
             padding: 20px;
             text-align: center;
-        }
-
-        .featured-destinations h2 {
-            margin-bottom: 20px;
-        }
-
-        .card {
-            width: 288px;
-            height: 250px;
-            margin-bottom: 20px;
-        }
-
-        .card img {
-            border-radius: 10px;
-        }
-
-        #footer {
-            background-color: #f8f9fa;
-            padding: 20px;
-            bottom: 0;
-            width: 100%;
-        }
-
-        #footer h2 {
-            text-align: center;
-        }
-
-        .contact-info {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .person {
-            width: 45%;
-        }
-
-        .person h3 {
-            margin-bottom: 10px;
-        }
-
-        .person p {
-            margin: 5px 0;
-        }
-
-        #start-button {
-            width: 200px;
-            height: 60px;
-            border: none;
-            border-radius: 30px;
-            background-image: linear-gradient(to right, #4CAF50, #2196F3);
-            color: white;
-            font-size: 24px;
-            cursor: pointer;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        .destination-button {
-            background-color: white;
-            color: black;
-            border: none;
-            outline: none;
         }
 
         .container {
@@ -111,11 +39,16 @@
         }
 
         #findDetails {
-            flex: 1 1 100%;
-            padding: 20px;
-            background-color: floralwhite;
-            color: darkslategray;
-        }
+        flex: 1 1 100%;
+        padding: 20px;
+        background-color: floralwhite;
+        color: darkslategray;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
 
         input, button {
             width: 80%;
@@ -137,18 +70,66 @@
         }
 
         #results {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
             margin-top: 20px;
-            text-align: left;
+            padding: 10px;
         }
 
-        h3 {
+        .card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            cursor: pointer;
+            transition: box-shadow 0.3s;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h3 {
+            margin: 10px 0;
+        }
+
+        .card .details {
+            display: none;
+            margin-top: 10px;
+        }
+
+        .card.active .details {
+            display: block;
+        }
+
+        #footer {
+            background-color: #f8f9fa;
+            padding: 20px;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .person {
+            width: 45%;
+        }
+
+        .person h3 {
+            margin-bottom: 10px;
+        }
+
+        .person p {
             margin: 5px 0;
         }
     </style>
 </head>
 <body>
 
-    <!-- Main Content -->
     <div class="container">
         <div id="findDetails">
             <h1>Input Your Requests</h1>
@@ -185,23 +166,20 @@
     </div>
 
     <script type="module">
-        // Import the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
         import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-analytics.js";
 
-        // Your web app's Firebase configuration
         const firebaseConfig = {
-          apiKey: "my key",
-          authDomain: "my domain",
-          databaseURL: "url",
-          projectId: "id",
-          storageBucket: "",
-          messagingSenderId: "",
-          appId: "id",
-          measurementId: "id"
+            apiKey: "AIzaSyC2-EpgTM8C-pCDGWZkT9K6lPLt9qYUKxk",
+            authDomain: "travelworld-d97ef.firebaseapp.com",
+            databaseURL: "https://travelworld-d97ef-default-rtdb.firebaseio.com",
+            projectId: "travelworld-d97ef",
+            storageBucket: "travelworld-d97ef.appspot.com",
+            messagingSenderId: "1044902042913",
+            appId: "1:1044902042913:web:612870f2fa2b1376283260",
+            measurementId: "G-101J190J0X"
         };
 
-        // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const analytics = getAnalytics(app);
 
@@ -210,9 +188,6 @@
         const db = getDatabase();
 
         const findCityInput = document.querySelector("#findCityInput");
-        const startDateInput = document.querySelector("#startDateInput");
-        const endDateInput = document.querySelector("#endDateInput");
-        const numPeopleInput = document.querySelector("#numPeopleInput");
         const resultsDiv = document.querySelector("#results");
         const findBtn = document.querySelector("#find");
 
@@ -234,9 +209,19 @@
                         let found = false;
                         for (let key in data) {
                             if (data[key].City.toLowerCase() === findCityInput.value.toLowerCase()) {
-                                resultsDiv.innerHTML += `<h3>Name: ${data[key].Name}</h3>`;
-                                resultsDiv.innerHTML += `<h3>Address: ${data[key].Address}</h3>`;
-                                resultsDiv.innerHTML += `<h3>Max Number of People: ${data[key].MaxNumPeople}</h3><br>`;
+                                const card = document.createElement('div');
+                                card.classList.add('card');
+                                card.innerHTML = `
+                                    <h3>${data[key].Name}</h3>
+                                    <p>${data[key].Address}</p>
+                                    <div class="details">
+                                        <h3>Max Number of People: ${data[key].MaxNumPeople}</h3>
+                                    </div>
+                                `;
+                                card.addEventListener('click', () => {
+                                    card.classList.toggle('active');
+                                });
+                                resultsDiv.appendChild(card);
                                 found = true;
                             }
                         }
