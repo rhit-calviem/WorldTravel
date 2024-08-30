@@ -1,145 +1,132 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>WorldTravel</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="icon" type="image/x-icon" href="favicon.ico"> 
-        <link rel="stylesheet" href="styles/main.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.css' integrity='sha512-AZtJoEn5SfSZimv10x5NMO2gaZCdoU8nxtHJK8O4SbKNlQeb1ggkvf0b0QixuuXIjX3Tp5jzBbTWajki81Vl2g==' crossorigin='anonymous'/>
-        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css' integrity='sha512-b2QcS5SsA8tZodcDtGRELiGv5SaKSk1vDHDaQRda0htPYWZ6046lr3kJ5bAAQdpV2mmA/4v0wQF9MyU6/pDIAg==' crossorigin='anonymous'/>
-    </head>
-    <body>
-        <!-- Create a navbar element -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-          <div class="container-fluid">
-              <a class="navbar-brand" href="#">WorldTravel</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNav">
-                  <ul class="navbar-nav">
-                      <li class="nav-item">
-                          <a class="nav-link active" aria-current="page" href="index.html">Home</a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link" href="#">About</a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link" href="#footer">Contact</a>
-                      </li>
-                  </ul>
-              </div>
-          </div>
-      </nav>
-  <!-- Create a main content element -->
-  <div class="main">
-    <div class="hero">
-        <br><br><br><br>
-        <p>Welcome to WorldTravel</p>
-        <p>Explore the world with us!</p>
-      </div>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>WorldTravel</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico"> 
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.css" integrity="sha512-AZtJoEn5SfSZimv10x5NMO2gaZCdoU8nxtHJK8O4SbKNlQeb1ggkvf0b0QixuuXIjX3Tp5jzBbTWajki81Vl2g==" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" integrity="sha512-b2QcS5SsA8tZodcDtGRELiGv5SaKSk1vDHDaQRda0htPYWZ6046lr3kJ5bAAQdpV2mmA/4v0wQF9MyU6/pDIAg==" crossorigin="anonymous"/>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">WorldTravel</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#footer">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-    <div class="featured-destinations">
-      <h2>Featured Destinations</h2>
-      <div class="row">
-          <div class="col-md-3">
-              <div class="card">
-                  <img src="images/London.jpg" class="card-img-top" alt="London">
-                  <div class="card-body">
-                      <button class="destination-button" data-city="London">London</button>
-                  </div>
-              </div>
-          </div>
-          <div class="col-md-3">
-              <div class="card">
-                  <img src="images/Milan.jpg" class="card-img-top" alt="Milan">
-                  <div class="card-body">
-                    <button class="destination-button" data-city="Milan">Milan</button>
-                  </div>
-              </div>
-          </div>
-          <div class="col-md-3">
-              <div class="card">
-                  <img src="images/Paris.jpg" class="card-img-top" alt="Paris">
-                  <div class="card-body">
-                    <button class="destination-button" data-city="Paris">Paris</button>
-                  </div>
-              </div>
-          </div>
-          <div class="col-md-3">
-              <div class="card">
-                  <img src="images/Sydney.jpg" class="card-img-top" alt="Sydney">
-                  <div class="card-body">
-                    <button class="destination-button" data-city="Sydney">Sydney</button>                  
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Discover Your Next Adventure</h1>
+            <p>Explore the world with us and make unforgettable memories!</p>
+            <a href="#featured-destinations" class="btn btn-primary btn-lg">Explore Destinations</a>
+        </div>
+    </header>
+
+
+    <!-- Featured Destinations -->
+    <section id="featured-destinations" class="featured-destinations">
+        <h2>Featured Destinations</h2>
+        <div class="card-grid">
+            <!-- Destination Cards -->
+            <div class="card">
+                <img src="images/London.jpg" class="card-img-top" alt="London">
+                <div class="card-body">
+                    <button class="destination-button" data-city="London">London</button>
                 </div>
-              </div>
-          </div>
-          <div class="col-md-3">
+            </div>
+            <div class="card">
+                <img src="images/Milan.jpg" class="card-img-top" alt="Milan">
+                <div class="card-body">
+                    <button class="destination-button" data-city="Milan">Milan</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="images/Paris.jpg" class="card-img-top" alt="Paris">
+                <div class="card-body">
+                    <button class="destination-button" data-city="Paris">Paris</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="images/Sydney.jpg" class="card-img-top" alt="Sydney">
+                <div class="card-body">
+                    <button class="destination-button" data-city="Sydney">Sydney</button>
+                </div>
+            </div>
             <div class="card">
                 <img src="images/Athens.jpeg" class="card-img-top" alt="Athens">
                 <div class="card-body">
                     <button class="destination-button" data-city="Athens">Athens</button>
                 </div>
             </div>
-        </div>
-        <div class="col-md-3">
             <div class="card">
                 <img src="images/NewYork.jpeg" class="card-img-top" alt="New York">
                 <div class="card-body">
-                    <button class="destination-button" data-city="New York">New York</button>                
+                    <button class="destination-button" data-city="New York">New York</button>
                 </div>
             </div>
-        </div>
-        <div class="col-md-3">
             <div class="card">
                 <img src="images/Dubai.jpeg" class="card-img-top" alt="Dubai">
                 <div class="card-body">
-                    <button class="destination-button" data-city="Dubai">Dubai</button>                
+                    <button class="destination-button" data-city="Dubai">Dubai</button>
                 </div>
             </div>
-        </div>
-        <div class="col-md-3">
             <div class="card">
                 <img src="images/Moscow.jpeg" class="card-img-top" alt="Moscow">
                 <div class="card-body">
-                    <button class="destination-button" data-city="Moscow">Moscow</button>                
+                    <button class="destination-button" data-city="Moscow">Moscow</button>
                 </div>
             </div>
         </div>
-      </div>
-  </div>
+    </section>
   
 
-  <button id="start-button" class="btn btn-primary btn-lg d-block mx-auto">Start</button>
-  <br>
-  </div>
+  <!-- Call to Action Button -->
+  <section class="cta">
+    <button id="start-button" class="btn btn-primary btn-lg">Get Started</button>
+</section>
 
-  <div id="footer">
-    <footer>
-        <h2>Contact Us</h2>
-        <div class="contact-info">
-            <div class="person">
-                <h3>Francesco Calabrese</h3>
-                <p>Phone: +393281670702</p>
-                <p>Email: name1@example.com</p>
-            </div>
-            <div class="person">
-                <h3>Matteo Calviello</h3>
-                <p>Phone: +393662156244</p>
-                <p>Email: mattecalviello04@gmail.com</p>
-            </div>
+<!-- Footer -->
+<footer id="footer">
+    <h2>Contact Us</h2>
+    <div class="contact-info">
+        <div class="person">
+            <h3>Francesco Calabrese</h3>
+            <p>Phone: +393281670702</p>
+            <p>Email: calabrese.francesco@studbocconi.it</p>
         </div>
-    </footer>
-</div>
+        <div class="person">
+            <h3>Matteo Calviello</h3>
+            <p>Phone: +393662156244</p>
+            <p>Email: mattecalviello04@gmail.com</p>
+        </div>
+    </div>
+</footer>
 
-        <script src="scripts/main.js"></script>
-        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js' integrity='sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==' crossorigin='anonymous'></script>
-        <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js' integrity='sha512-X/YkDZyjTf4wyc2Vy16YGCPHwAY8rZJY+POgokZjQB2mhIRFJCckEGc6YyX9eNsPfn0PzThEuNs+uaomE5CO6A==' crossorigin='anonymous'></script>
-        <script src='https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.js' integrity='sha512-rXm6RiYDlz+aZC/ht75tGzeAmCg4gVfBA6Be5s5uENSahiXkgwEy10J2Cc+dxUAW4lRRQYbS5pugMOqBrs8ksw==' crossorigin='anonymous'></script>
-        <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.min.js' integrity='sha512-WW8/jxkELe2CAiE4LvQfwm1rajOS8PHasCCx+knHG0gBHt8EXxS6T6tJRTGuDQVnluuAvMxWF4j8SNFDKceLFg==' crossorigin='anonymous'></script>
-    </body>
+<script src="scripts/main.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js" integrity="sha512-X/YkDZyjTf4wyc2Vy16YGCPHwAY8rZJY+POgokZjQB2mhIRFJCckEGc6YyX9eNsPfn0PzThEuNs+uaomE5CO6A==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.js" integrity="sha512-rXm6RiYDlz+aZC/ht75tGzeAmCg4gVfBA6Be5s5uENSahiXkgwEy10J2Cc+dxUAW4lRRQYbS5pugMOqBrs8ksw==" crossorigin="anonymous"></script>
+</body>
 </html>
